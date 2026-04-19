@@ -18,6 +18,10 @@ public class AuthController {
     @Autowired
     private AuthService authService;
 
+      @GetMapping("/")
+    public String home() {
+        return "Backend is running ";
+    }
 
     @PostMapping("/register")
     public ResponseEntity<?> UserRegister(@RequestBody User u){
