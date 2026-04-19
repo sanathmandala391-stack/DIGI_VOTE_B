@@ -128,10 +128,11 @@ public class SecurityConfig {
         CorsConfiguration config = new CorsConfiguration();
 
         // 🔥 IMPORTANT: use patterns (not allowedOrigins)
-        config.setAllowedOriginPatterns(List.of(
-                "http://localhost:*",
-                "https://*.onrender.com"
-        ));
+    config.setAllowedOriginPatterns(List.of(
+    "http://localhost:*",
+    "https://*.vercel.app",
+    "https://*.onrender.com"
+));
 
         config.setAllowedMethods(List.of("*"));
         config.setAllowedHeaders(List.of("*"));
