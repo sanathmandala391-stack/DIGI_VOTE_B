@@ -211,6 +211,73 @@
 //    public LocalDateTime getCreatedAt() { return createdAt; }
 //    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
 //}//
+
+
+
+// package VotingSystem.demo.models;
+
+// import jakarta.persistence.*;
+// import java.time.LocalDateTime;
+
+// @Entity
+// @Table(name = "users")
+// public class User {
+
+//     @Id
+//     @GeneratedValue(strategy = GenerationType.IDENTITY)
+//     private Long id;
+
+//     private String name;
+
+//     @Column(unique = true, nullable = false)
+//     private String email;
+
+//     private String password;
+
+//     @Enumerated(EnumType.STRING)
+//     private Role role;
+
+//     // Use Boolean wrapper (not primitive boolean)
+//     // Mapped explicitly to column "verified" with default 0
+//     // Boolean handles null from DB gracefully — primitive boolean crashes
+//     @Column(name = "verified", nullable = false, columnDefinition = "TINYINT(1) DEFAULT 0")
+//     private Boolean verified = false;
+
+//     @Column(columnDefinition = "TEXT")
+//     private String faceEmbedding;
+
+//     private LocalDateTime createdAt = LocalDateTime.now();
+
+//     public User() {}
+
+//     public Long getId() { return id; }
+//     public void setId(Long id) { this.id = id; }
+
+//     public String getName() { return name; }
+//     public void setName(String name) { this.name = name; }
+
+//     public String getEmail() { return email; }
+//     public void setEmail(String email) { this.email = email; }
+
+//     public String getPassword() { return password; }
+//     public void setPassword(String password) { this.password = password; }
+
+//     public Role getRole() { return role; }
+//     public void setRole(Role role) { this.role = role; }
+
+//     public boolean isVerified() { return Boolean.TRUE.equals(verified); }
+//     public void setVerified(boolean verified) { this.verified = verified; }
+
+//     public String getFaceEmbedding() { return faceEmbedding; }
+//     public void setFaceEmbedding(String faceEmbedding) { this.faceEmbedding = faceEmbedding; }
+
+//     public LocalDateTime getCreatedAt() { return createdAt; }
+//     public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
+// }
+
+
+//final 3//
+
 package VotingSystem.demo.models;
 
 import jakarta.persistence.*;
@@ -234,10 +301,8 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    // Use Boolean wrapper (not primitive boolean)
-    // Mapped explicitly to column "verified" with default 0
-    // Boolean handles null from DB gracefully — primitive boolean crashes
-    @Column(name = "verified", nullable = false, columnDefinition = "TINYINT(1) DEFAULT 0")
+    // ✅ FIXED (PostgreSQL compatible)
+    @Column(nullable = false)
     private Boolean verified = false;
 
     @Column(columnDefinition = "TEXT")
