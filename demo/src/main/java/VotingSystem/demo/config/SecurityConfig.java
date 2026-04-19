@@ -58,6 +58,7 @@ public class SecurityConfig {
 
                         // 1. Allow ALL preflight OPTIONS requests — browser sends these before every POST/PUT
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                                    .requestMatchers("/").permitAll()
 
                         // 2. Auth endpoints — register & login
                         .requestMatchers("/auth/**").permitAll()
